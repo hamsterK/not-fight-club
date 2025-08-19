@@ -19,3 +19,14 @@ main {
   max-width: 120px;
   margin: 15px;
 }
+
+.container-character-page {
+  display: flex;
+  justify-content: space-between;
+}
+
+.character-image {
+  max-width: 300px;
+  max-height: 400px;
+  margin: 20px;
+}
