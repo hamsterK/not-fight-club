@@ -1,4 +1,21 @@
-.container {
+main {
+  margin: 20px;
   display: flex;
   justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: fit-content;
+  align-items: center;
+}
+
+.input-character-name-field {
+  max-width: 250px;
+}
+
+.save-btn {
+  max-width: 120px;
+  margin: 15px;
 }
