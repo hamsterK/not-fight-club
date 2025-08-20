@@ -23,11 +23,12 @@ main {
 .container-character-page {
   display: flex;
   justify-content: space-between;
+  max-width: 100%;
 }
 
 .character-image {
   max-width: 300px;
-  max-height: 400px;
+  max-height: 200px;
   margin: 20px;
 }
 
@@ -36,4 +37,18 @@ main {
   display: flex;
   justify-content: space-between;
   gap: 20px;
+}
+
+.container-fight-page {
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+}
+
+.container-fight-element {
+  margin: 50px;
+}
+
+.hidden {
+  display: none;
 }

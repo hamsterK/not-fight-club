@@ -5,15 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Not a fight club</title>
     <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/script.js" defer></script>
   </head>
   <body>
     <header>
       <p>Future header</p>
     </header>
     <main>
-      <div class="container">
+      <div class="container register hidden">
+        <p>Character Name</p>
+        <input
+          type="text"
+          id="character-name"
+          placeholder="Enter Character Name"
+          class="input-character-name-field"
+        />
+        <button id="create-character-btn" class="save-btn">
+          Create Character
+        </button>
+      </div>
+      <div class="container-character-page hidden">
+        <div>
+          <img
+            src="assets/characters/cat-fighter.jpg"
+            alt="Character Image"
+            class="character-image"
+          />
+        </div>
+        <div class="character-statistics">
+          <h2>Character Name</h2>
+          <p>Wins: 100</p>
+          <p>Loses: 10</p>
+        </div>
+      </div>
+      <div class="container-settings hidden">
+          <p>Character Name:</p>
+          <p>NAME</p>
+          <button id="edit-character-btn" class="save-btn">
+            Edit
+      </div>
+      <div class="container start-fight hidden">
         <button id="fight-btn">Fight!</button>
       </div>
+      <div class="container-fight-page hidden">
+        <div class="container-fight-element">
+          <p class="my-character-name">CHARACTER NAME</p>
+          <img
+            src="assets/characters/cat-fighter.jpg"
+            alt="Character Image"
+            class="character-image my-character-image"
+          />
+          <p>HEALTH 120/150</p>
+        </div>
+        <div class="container-fight-element">
+          <p class="fighting-intructions">
+            Please pick 1 Attack and 2 Defense zones
+          </p>
+          <p>XXX</p>
+        </div>
+        <div class="container-fight-element">
+          <p class="rival-name">Evil character</p>
+          <img
+            src="assets/characters/snake-fighter.jpg"
+            alt="Rival Image"
+            class="character-image rival"
+          />
+          <p>HEALTH 140/150</p>
+        </div>
     </main>
   </body>
 </html>
