@@ -1,3 +1,4 @@
+const header = document.querySelector("header");
 const registerContainer = document.querySelector(".register");
 const characterNameInput = document.querySelector("#character-name");
 const createCharacterBtn = document.querySelector("#create-character-btn");
@@ -22,6 +23,7 @@ let userData = localStorage.getItem("userData");
 if (userData) {
   userData = JSON.parse(userData);
   startFight.classList.remove("hidden");
+  header.classList.remove("hidden");
 } else {
   registerContainer.classList.remove("hidden");
   createCharacterBtn.addEventListener("click", () => {
@@ -30,6 +32,7 @@ if (userData) {
       userData = { name: characterName, wins: 0, losses: 0 };
       localStorage.setItem("userData", JSON.stringify(userData));
       registerContainer.classList.add("hidden");
+      header.classList.remove("hidden");
       startFight.classList.remove("hidden");
     }
   });
