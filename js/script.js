@@ -9,11 +9,14 @@ const characterSettings = document.querySelector(".container-settings");
 const startFight = document.querySelector(".start-fight");
 const fightBtn = document.querySelector("#fight-btn");
 
-const fightPage = document.querySelector(".container-fight-page");
+const fightPage = document.querySelector(".fight-page");
 const rivalName = document.querySelector(".rival-name");
 const rivalImage = document.querySelector(".character-image.rival");
 const myName = document.querySelector(".my-character-name");
 const myImage = document.querySelector(".my-character-image");
+const attackBtn = document.querySelector("#attack-btn");
+const attackErrorMessage = document.querySelector("#attack-error-msg");
+const fightProgressText = document.getElementById("fight-progress-text");
 
 const rivalCharacters = [
   { name: "Evil Snake", image: "assets/characters/snake-fighter.jpg" },
@@ -48,3 +51,36 @@ fightBtn.addEventListener("click", () => {
   myName.textContent = userData.name;
   myImage.src = userData.image || "assets/characters/cat-fighter.jpg";
 });
+
+attackBtn.addEventListener("click", () => {
+  const { attackZone, defenseZones } = updateZones();
+  if (!validateDefenseZones(defenseZones)) {
+    return;
+  }
+
+  const newLine = document.createElement("p");
+  newLine.textContent = `${myName.textContent} attacked ${rivalName.textContent} to ${attackZone}.`;
+  fightProgressText.appendChild(newLine);
+});
+
+function updateZones() {
+  const attackZone = document.querySelector(
+    'input[name="attack-zone"]:checked'
+  ).value;
+  const defenseZone = document.querySelectorAll(
+    'input[name="defense-zone"]:checked'
+  );
+  const defenseZones = Array.from(defenseZone).map((x) => x.value);
+
+  return { attackZone, defenseZones };
+}
+
+function validateDefenseZones(defenseZones) {
+  if (defenseZones.length != 2) {
+    attackErrorMessage.textContent = "You must select 2 attack zones";
+    return false;
+  } else {
+    attackErrorMessage.textContent = "";
+    return true;
+  }
+}
