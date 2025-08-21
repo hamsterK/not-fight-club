@@ -13,13 +13,13 @@
       <p>Future header</p>
       <div class="header-buttons">
         <div id="home-btn">
-          <img src="assets/svg/home.svg" alt="Home button" />
+          <img src="assets/svg/home.svg" alt="Home button" draggable="false"/>
       </div>
               <div id="character-btn">
-          <img src="assets/svg/character.svg" alt="Character button" />
+          <img src="assets/svg/character.svg" alt="Character button" draggable="false"/>
       </div>
               <div id="settings-btn">
-          <img src="assets/svg/settings.svg" alt="Settings button" />
+          <img src="assets/svg/settings.svg" alt="Settings button" draggable="false"/>
       </div>
             </div>
             </div>
@@ -70,12 +70,40 @@
             class="character-image my-character-image"
           />
           <p>HEALTH 120/150</p>
+          <progress class="health-bar" id="my-health" value="150" max="150"></progress>
         </div>
         <div class="container-fight-element">
           <p class="fighting-intructions">
             Please pick 1 Attack and 2 Defense zones
           </p>
           <p>XXX</p>
+          <div class="fight-selections">
+          <div class="fight-radio-buttons">Attack zone:
+          <input type="radio" name="attack-zone" id="attack-head" value="head">
+          <label for="attack-head">Head</label>
+          <input type="radio" name="attack-zone" id="attack-neck" value="neck">
+          <label for="attack-neck">Neck</label>
+          <input type="radio" name="attack-zone" id="attack-stomach" value="stomach">
+          <label for="attack-stomach">Stomach</label>
+          <input type="radio" name="attack-zone" id="attack-body" value="body">
+          <label for="attack-body">Body</label>
+          <input type="radio" name="attack-zone" id="attack-legs" value="legs">
+          <label for="attack-legs">Legs</label>
+          </div>
+          <div class="fight separator"></div>
+          <div class="fight-radio-buttons">Defense zones:
+            <input type="radio" name="defense-zone" id="defense-head" value="head">
+          <label for="defense-head">Head</label>
+          <input type="radio" name="defense-zone" id="defense-neck" value="neck">
+          <label for="defense-neck">Neck</label>
+          <input type="radio" name="defense-zone" id="defense-stomach" value="stomach">
+          <label for="defense-stomach">Stomach</label>
+          <input type="radio" name="defense-zone" id="defense-body" value="body">
+          <label for="defense-body">Body</label>
+          <input type="radio" name="defense-zone" id="defense-legs" value="legs">
+          <label for="defense-legs">Legs</label>
+          </div>
+          </div>
         </div>
         <div class="container-fight-element">
           <p class="rival-name">Evil character</p>
@@ -85,7 +113,10 @@
             class="character-image rival"
           />
           <p>HEALTH 140/150</p>
+          <progress class="health-bar" id="my-health" value="150" max="150"></progress>
         </div>
+       <button id="attack-btn" class="attack-btn">Attack!</button>
+</div>
     </main>
   </body>
 </html>

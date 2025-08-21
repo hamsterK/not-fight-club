@@ -70,3 +70,40 @@ main {
 .hidden {
   display: none;
 }
+
+.health-bar {
+  width: 100%;
+  height: 20px;
+  color: #000;
+  background-color: #f00;
+  border-radius: 10px;
+}
+
+.fight-selections {
+  display: flex;
+}
+
+.fight-radio-buttons {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.fight.separator {
+  width: 2px;
+  height: 220px;
+  margin: 20px;
+}
+
+.radio-button-selection {
+  display: flex;
+  align-items: center;
+}
+
+.attack-btn {
+  margin: 15px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
