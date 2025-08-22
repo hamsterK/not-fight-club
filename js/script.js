@@ -17,10 +17,20 @@ const myImage = document.querySelector(".my-character-image");
 const attackBtn = document.querySelector("#attack-btn");
 const attackErrorMessage = document.querySelector("#attack-error-msg");
 const fightProgressText = document.getElementById("fight-progress-text");
+const myHealthBar = document.getElementById("#my-health");
+const myHealthBarText = document.getElementById("my-health-bar-text");
+const rivalHealthBar = document.getElementById("#rival-health");
+const rivalHealthBarText = document.getElementById("rival-health-bar-text");
 
 const rivalCharacters = [
   { name: "Evil Snake", image: "assets/characters/snake-fighter.jpg" },
 ];
+
+let rivalInfo;
+let myAttackStrength;
+let rivalAttackStrength;
+let myHealth;
+let rivalHealth;
 
 let userData = localStorage.getItem("userData");
 if (userData) {
@@ -44,12 +54,16 @@ if (userData) {
 fightBtn.addEventListener("click", () => {
   startFight.classList.add("hidden");
   fightPage.classList.remove("hidden");
-  let rivalInfo =
+  rivalInfo =
     rivalCharacters[Math.floor(Math.random() * rivalCharacters.length)];
   rivalName.textContent = rivalInfo.name;
   rivalImage.src = rivalInfo.image;
   myName.textContent = userData.name;
   myImage.src = userData.image || "assets/characters/cat-fighter.jpg";
+  myHealth = 150;
+  rivalHealth = 150;
+  myAttackStrength = 10;
+  rivalAttackStrength = 15;
 });
 
 attackBtn.addEventListener("click", () => {
@@ -58,9 +72,8 @@ attackBtn.addEventListener("click", () => {
     return;
   }
 
-  const newLine = document.createElement("p");
-  newLine.textContent = `${myName.textContent} attacked ${rivalName.textContent} to ${attackZone}.`;
-  fightProgressText.appendChild(newLine);
+  getAttackResult(attackZone, defenseZones);
+  updateHealthBars();
 });
 
 function updateZones() {
@@ -83,4 +96,68 @@ function validateDefenseZones(defenseZones) {
     attackErrorMessage.textContent = "";
     return true;
   }
+}
+
+function createLog(message) {
+  const newLine = document.createElement("p");
+  newLine.textContent = message;
+  fightProgressText.appendChild(newLine);
+}
+
+function getAttackResult(attackZone, defenseZones) {
+  const zones = ["head", "neck", "stomach", "body", "legs"];
+  const rivalAttackZone = zones[Math.floor(Math.random() * zones.length)];
+  let rivalDefenseZones = new Set();
+  while (rivalDefenseZones.length < 2) {
+    rivalDefenseZones.add(zones[Math.floor(Math.random() * zones.length)]);
+  }
+  rivalDefenseZones = Array.from(rivalDefenseZones);
+
+  if (rivalDefenseZones.includes(attackZone)) {
+    message = `${userData.name} attacked ${rivalInfo.name} to ${attackZone}, but ${rivalInfo.name} defended it.`;
+    createLog(message);
+  } else {
+    message = `${userData.name} attacked ${rivalInfo.name} to ${attackZone}, ${rivalInfo.name} lost ${myAttackStrength} health points`;
+    createLog(message);
+    rivalHealth -= myAttackStrength;
+    if (rivalHealth <= 0) {
+      message = `${userData.name} won the fight!`;
+      createLog(message);
+      userData.wins += 1;
+      localStorage.setItem("userData", JSON.stringify(userData));
+      return;
+    }
+  }
+
+  if (defenseZones.includes(rivalAttackZone)) {
+    message = `${rivalInfo.name} attacked ${userData.name} to ${rivalAttackZone}, but ${userData.name} defended it.`;
+    createLog(message);
+  } else {
+    message = `${rivalInfo.name} attacked ${userData.name} to ${rivalAttackZone}, ${userData.name} lost ${rivalAttackStrength} health points`;
+    createLog(message);
+    myHealth -= rivalAttackStrength;
+    if (myHealth <= 0) {
+      message = `${rivalInfo.name} won the fight!`;
+      createLog(message);
+      userData.losses += 1;
+      localStorage.setItem("userData", JSON.stringify(userData));
+      return;
+    }
+  }
+}
+
+function updateHealthBars() {
+  if (myHealth <= 0) {
+    myHealthBar.value = 0;
+  } else {
+    myHealthBar.value = myHealth;
+  }
+  myHealthBarText.textContent = `HEALTH ${myHealth}/150`;
+
+  if (rivalHealth <= 0) {
+    rivalHealthBar.value = 0;
+  } else {
+    rivalHealthBar.value = rivalHealth;
+  }
+  rivalHealthBarText.textContent = `HEALTH ${rivalHealth}/150`;
 }
