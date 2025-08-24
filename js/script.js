@@ -96,6 +96,8 @@ fightBtn.addEventListener("click", () => {
   rivalAttackStrength = 15;
   readyToFight = true;
   attackBtn.classList.remove("hidden");
+  updateHealthBars();
+  fightProgressText.innerHTML = "";
 });
 
 attackBtn.addEventListener("click", () => {
@@ -140,7 +142,7 @@ function getAttackResult(attackZone, defenseZones) {
   const zones = ["head", "neck", "stomach", "body", "legs"];
   const rivalAttackZone = zones[Math.floor(Math.random() * zones.length)];
   let rivalDefenseZones = new Set();
-  while (rivalDefenseZones.length < 2) {
+  while (rivalDefenseZones.size < 2) {
     rivalDefenseZones.add(zones[Math.floor(Math.random() * zones.length)]);
   }
   rivalDefenseZones = Array.from(rivalDefenseZones);
