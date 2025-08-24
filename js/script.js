@@ -30,6 +30,18 @@ const rivalHealthBarText = document.getElementById("rival-health-bar-text");
 const statisticsWins = document.getElementById("statistics-wins");
 const statisticsLoses = document.getElementById("statistics-loses");
 
+const editCharacterNameBtn = document.getElementById("edit-character-btn");
+const settingsCharacterName = document.getElementById(
+  "settings-character-name"
+);
+const characterNameStatistics = document.getElementById(
+  "character-name-statistics"
+);
+const settingsNameInput = document.getElementById(
+  "settings-character-name-input"
+);
+const SaveNameInputBtn = document.getElementById("save-character-btn");
+
 const rivalCharacters = [
   { name: "Evil Snake", image: "assets/characters/snake-fighter.jpg" },
   { name: "Evil Dragon", image: "assets/characters/evil_dragon.jpg" },
@@ -52,6 +64,7 @@ if (userData) {
   startFight.classList.remove("hidden");
   header.classList.remove("hidden");
   updateAccountStatistics();
+  updateCharacterNameDisplay();
 } else {
   registerContainer.classList.remove("hidden");
   createCharacterBtn.addEventListener("click", () => {
@@ -59,6 +72,8 @@ if (userData) {
     if (characterName) {
       userData = { name: characterName, wins: 0, losses: 0 };
       localStorage.setItem("userData", JSON.stringify(userData));
+      updateCharacterNameDisplay();
+      updateAccountStatistics();
       registerContainer.classList.add("hidden");
       header.classList.remove("hidden");
       startFight.classList.remove("hidden");
@@ -108,6 +123,27 @@ attackBtn.addEventListener("click", () => {
 
   getAttackResult(attackZone, defenseZones);
   updateHealthBars();
+});
+
+editCharacterNameBtn.addEventListener("click", () => {
+  settingsCharacterName.classList.add("hidden");
+  editCharacterNameBtn.classList.add("hidden");
+  SaveNameInputBtn.classList.remove("hidden");
+  settingsNameInput.classList.remove("hidden");
+});
+
+SaveNameInputBtn.addEventListener("click", () => {
+  const newName = settingsNameInput.value.trim();
+  if (newName) {
+    userData.name = newName;
+    localStorage.setItem("userData", JSON.stringify(userData));
+    updateCharacterNameDisplay();
+    settingsCharacterName.classList.remove("hidden");
+    editCharacterNameBtn.classList.remove("hidden");
+    SaveNameInputBtn.classList.add("hidden");
+    settingsNameInput.classList.add("hidden");
+    settingsNameInput.value = "";
+  }
 });
 
 function updateZones() {
@@ -218,4 +254,9 @@ function updateAccountStatistics() {
   statisticsLoses.textContent = `Loses: ${
     userData ? userData.losses : "No data"
   }`;
+}
+
+function updateCharacterNameDisplay() {
+  settingsCharacterName.textContent = userData.name;
+  characterNameStatistics.textContent = userData.name;
 }

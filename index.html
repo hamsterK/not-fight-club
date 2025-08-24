@@ -47,17 +47,22 @@
           />
         </div>
         <div class="character-statistics">
-          <h2>Character Name</h2>
+          <h2 id="character-name-statistics">Character Name</h2>
           <p id="statistics-wins">Wins: No info</p>
           <p id="statistics-loses">Loses: No info</p>
         </div>
       </div>
       <div class="container-settings hidden screen">
           <p>Character Name:</p>
-          <p>NAME</p>
+          <p id="settings-character-name">NAME</p>
           <button id="edit-character-btn" class="save-btn">
-            Edit
+            Edit</button>
+          <input type="text" id="settings-character-name-input"  placeholder="Enter Character Name" class="hidden input-character-name-field"></input>
+          <button id="save-character-btn" class="save-btn hidden">
+            Update Character</button>
       </div>
+      </div>
+     
       <div class="container start-fight hidden screen">
         <button id="fight-btn">Fight!</button>
       </div>
