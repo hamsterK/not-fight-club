@@ -24,6 +24,11 @@ const rivalHealthBarText = document.getElementById("rival-health-bar-text");
 
 const rivalCharacters = [
   { name: "Evil Snake", image: "assets/characters/snake-fighter.jpg" },
+  { name: "Evil Dragon", image: "assets/characters/evil_dragon.jpg" },
+  { name: "Evil Cat", image: "assets/characters/evil_cat.jpg" },
+  { name: "Evil Raccoon", image: "assets/characters/evil_raccoon.jpg" },
+  { name: "Evil Shark", image: "assets/characters/evil_shark.jpg" },
+  { name: "Evil Hamster", image: "assets/characters/evil_" },
 ];
 
 let rivalInfo;
