@@ -27,6 +27,9 @@ const myHealthBarText = document.getElementById("my-health-bar-text");
 const rivalHealthBar = document.getElementById("rival-health");
 const rivalHealthBarText = document.getElementById("rival-health-bar-text");
 
+const statisticsWins = document.getElementById("statistics-wins");
+const statisticsLoses = document.getElementById("statistics-loses");
+
 const rivalCharacters = [
   { name: "Evil Snake", image: "assets/characters/snake-fighter.jpg" },
   { name: "Evil Dragon", image: "assets/characters/evil_dragon.jpg" },
@@ -48,6 +51,7 @@ if (userData) {
   userData = JSON.parse(userData);
   startFight.classList.remove("hidden");
   header.classList.remove("hidden");
+  updateAccountStatistics();
 } else {
   registerContainer.classList.remove("hidden");
   createCharacterBtn.addEventListener("click", () => {
@@ -156,6 +160,7 @@ function getAttackResult(attackZone, defenseZones) {
       readyToFight = false;
       attackBtn.classList.add("hidden");
       attackErrorMessage.textContent = "The fight is over";
+      updateAccountStatistics();
       return;
     }
   }
@@ -175,6 +180,7 @@ function getAttackResult(attackZone, defenseZones) {
       readyToFight = false;
       attackBtn.classList.add("hidden");
       attackErrorMessage.textContent = "The fight is over";
+      updateAccountStatistics();
       return;
     }
   }
@@ -203,4 +209,11 @@ function closeAllScreens() {
       page.classList.add("hidden");
     }
   });
+}
+
+function updateAccountStatistics() {
+  statisticsWins.textContent = `Wins: ${userData ? userData.wins : "No data"}`;
+  statisticsLoses.textContent = `Loses: ${
+    userData ? userData.losses : "No data"
+  }`;
 }
