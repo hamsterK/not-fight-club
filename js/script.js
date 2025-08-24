@@ -1,4 +1,9 @@
 const header = document.querySelector("header");
+
+const homeBtn = document.querySelector("#home-btn");
+const characterBtn = document.querySelector("#character-btn");
+const settingsBtn = document.querySelector("#settings-btn");
+
 const registerContainer = document.querySelector(".register");
 const characterNameInput = document.querySelector("#character-name");
 const createCharacterBtn = document.querySelector("#create-character-btn");
@@ -28,7 +33,7 @@ const rivalCharacters = [
   { name: "Evil Cat", image: "assets/characters/evil_cat.jpg" },
   { name: "Evil Raccoon", image: "assets/characters/evil_raccoon.jpg" },
   { name: "Evil Shark", image: "assets/characters/evil_shark.jpg" },
-  { name: "Evil Hamster", image: "assets/characters/evil_" },
+  { name: "Evil Hamster", image: "assets/characters/evil_hamster.jpg" },
 ];
 
 let rivalInfo;
@@ -56,6 +61,21 @@ if (userData) {
     }
   });
 }
+
+homeBtn.addEventListener("click", () => {
+  closeAllScreens();
+  startFight.classList.remove("hidden");
+});
+
+characterBtn.addEventListener("click", () => {
+  closeAllScreens();
+  characterPageContainer.classList.remove("hidden");
+});
+
+settingsBtn.addEventListener("click", () => {
+  closeAllScreens();
+  characterSettings.classList.remove("hidden");
+});
 
 fightBtn.addEventListener("click", () => {
   startFight.classList.add("hidden");
@@ -174,4 +194,13 @@ function updateHealthBars() {
     rivalHealthBar.value = rivalHealth;
   }
   rivalHealthBarText.textContent = `HEALTH ${rivalHealth}/150`;
+}
+
+function closeAllScreens() {
+  const allPages = document.querySelectorAll(".screen");
+  allPages.forEach((page) => {
+    if (!page.classList.contains("hidden")) {
+      page.classList.add("hidden");
+    }
+  });
 }

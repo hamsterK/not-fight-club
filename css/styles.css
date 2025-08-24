@@ -14,6 +14,13 @@ main {
 .header-buttons {
   display: flex;
   align-items: center;
+  padding: 10px;
+}
+
+.header-buttons > button {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .separator {

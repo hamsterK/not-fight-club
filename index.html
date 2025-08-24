@@ -10,23 +10,23 @@
   <body>
     <header class="hidden">
       <div class="container-header">
-      <p>Future header</p>
+      <p>Menu:</p>
       <div class="header-buttons">
-        <div id="home-btn">
+        <button id="home-btn">
           <img src="assets/svg/home.svg" alt="Home button" draggable="false"/>
-      </div>
-              <div id="character-btn">
+        </button>
+              <button id="character-btn">
           <img src="assets/svg/character.svg" alt="Character button" draggable="false"/>
-      </div>
-              <div id="settings-btn">
+              </button>
+              <button id="settings-btn">
           <img src="assets/svg/settings.svg" alt="Settings button" draggable="false"/>
-      </div>
+              </button>
             </div>
             </div>
       <div class="separator"></div>
     </header>
     <main>
-      <div class="container register hidden">
+      <div class="container register hidden screen">
         <p>Character Name</p>
         <input
           type="text"
@@ -38,7 +38,7 @@
           Create Character
         </button>
       </div>
-      <div class="container-character-page hidden">
+      <div class="container-character-page hidden screen">
         <div>
           <img
             src="assets/characters/cat-fighter.jpg"
@@ -52,16 +52,16 @@
           <p>Loses: 10</p>
         </div>
       </div>
-      <div class="container-settings hidden">
+      <div class="container-settings hidden screen">
           <p>Character Name:</p>
           <p>NAME</p>
           <button id="edit-character-btn" class="save-btn">
             Edit
       </div>
-      <div class="container start-fight hidden">
+      <div class="container start-fight hidden screen">
         <button id="fight-btn">Fight!</button>
       </div>
-      <div class="fight-page hidden">
+      <div class="fight-page hidden screen">
         <div class="container-fight-page">
         <div class="container-fight-element">
           <p class="my-character-name">CHARACTER NAME</p>
