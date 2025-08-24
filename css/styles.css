@@ -109,3 +109,7 @@ main {
   align-items: center;
   flex-direction: column;
 }
+
+#fight-btn {
+  margin-top: 200px;
+}
