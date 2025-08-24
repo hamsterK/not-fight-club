@@ -17,9 +17,9 @@ const myImage = document.querySelector(".my-character-image");
 const attackBtn = document.querySelector("#attack-btn");
 const attackErrorMessage = document.querySelector("#attack-error-msg");
 const fightProgressText = document.getElementById("fight-progress-text");
-const myHealthBar = document.getElementById("#my-health");
+const myHealthBar = document.getElementById("my-health");
 const myHealthBarText = document.getElementById("my-health-bar-text");
-const rivalHealthBar = document.getElementById("#rival-health");
+const rivalHealthBar = document.getElementById("rival-health");
 const rivalHealthBarText = document.getElementById("rival-health-bar-text");
 
 const rivalCharacters = [
@@ -93,7 +93,7 @@ function updateZones() {
 
 function validateDefenseZones(defenseZones) {
   if (defenseZones.length != 2) {
-    attackErrorMessage.textContent = "You must select 2 attack zones";
+    attackErrorMessage.textContent = "You must select 2 defense zones";
     return false;
   } else {
     attackErrorMessage.textContent = "";
