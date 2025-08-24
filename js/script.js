@@ -31,6 +31,7 @@ let myAttackStrength;
 let rivalAttackStrength;
 let myHealth;
 let rivalHealth;
+let readyToFight = true;
 
 let userData = localStorage.getItem("userData");
 if (userData) {
@@ -64,6 +65,8 @@ fightBtn.addEventListener("click", () => {
   rivalHealth = 150;
   myAttackStrength = 10;
   rivalAttackStrength = 15;
+  readyToFight = true;
+  attackBtn.classList.remove("hidden");
 });
 
 attackBtn.addEventListener("click", () => {
@@ -125,6 +128,9 @@ function getAttackResult(attackZone, defenseZones) {
       createLog(message);
       userData.wins += 1;
       localStorage.setItem("userData", JSON.stringify(userData));
+      readyToFight = false;
+      attackBtn.classList.add("hidden");
+      attackErrorMessage.textContent = "The fight is over";
       return;
     }
   }
@@ -141,6 +147,9 @@ function getAttackResult(attackZone, defenseZones) {
       createLog(message);
       userData.losses += 1;
       localStorage.setItem("userData", JSON.stringify(userData));
+      readyToFight = false;
+      attackBtn.classList.add("hidden");
+      attackErrorMessage.textContent = "The fight is over";
       return;
     }
   }
